@@ -159,8 +159,8 @@ docker compose exec app php artisan db:seed --force
 Seeder จะสร้างข้อมูลตัวอย่างดังนี้
 
 - ผู้ใช้ระบบที่เป็น **Admin เริ่มต้น**
-  - Email: `66160255@go.buu.ac.th`
-  - Password: `Tan123456789`
+  - Email: `admin@example.com`
+  - Password: `admin123456`
 
 และสร้าง ticket ตัวอย่าง 1 อันจาก `TicketSeeder`
 
