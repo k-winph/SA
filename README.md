@@ -177,8 +177,8 @@ Seeder จะสร้างข้อมูลตัวอย่างดัง�
 - **หน้า Login**  
   ใช้บัญชี admin จาก seeder
 
-  - Email: `66160255@go.buu.ac.th`
-  - Password: `Tan123456789`
+  - Email: `admin@example.com`
+  - Password: `admin123456`
 
 - **phpMyAdmin**  
   ไปที่: `http://localhost:8082` (หรือพอร์ตที่แมปไว้ใน service `phpmyadmin`)  
@@ -186,54 +186,7 @@ Seeder จะสร้างข้อมูลตัวอย่างดัง�
 
 ---
 
-## 5. การใช้งาน API Ingestion
-
-ระบบมี endpoint สำหรับสร้าง ticket ผ่าน API เพื่อเชื่อมต่อกับระบบภายนอก เช่น email gateway, bot ฯลฯ
-
-### Endpoint
-
-```http
-POST /api/ingest/tickets
-Content-Type: application/json
-X-Integration-Token: {TICKET_INGESTION_TOKEN ที่ตั้งใน .env}
-```
-
-### ตัวอย่าง Request
-
-```json
-{
-  "subject": "VPN disconnected every hour",
-  "description": "Tunnel drops on Wi-Fi and LTE.",
-  "channel": "email",
-  "category": "network",
-  "impact": "high",
-  "urgency": "medium",
-  "requester_email": "user@example.com",
-  "requester_name": "Remote User",
-  "metadata": {
-    "message_id": "<abc123@example.com>"
-  }
-}
-```
-
-### ตัวอย่าง Response
-
-```json
-{
-  "ticket_id": 1,
-  "status": "open",
-  "assignment_group": "Network Operations",
-  "priority": "high",
-  "sla_due_at": "2025-11-16T10:00:00Z",
-  "knowledge_base_suggestions": []
-}
-```
-
-> ต้องตั้งค่า `TICKET_INGESTION_TOKEN` ใน `.env` ให้ตรงกับ header `X-Integration-Token` ก่อนใช้งาน endpoint นี้
-
----
-
-## 6. คำสั่งที่ใช้บ่อยใน Container
+## 5. คำสั่งที่ใช้บ่อยใน Container
 
 ```bash
 # ดูสถานะ container ทั้งหมด
@@ -253,7 +206,7 @@ docker compose exec app tail -f storage/logs/laravel.log
 
 ---
 
-## 7. Troubleshooting เบื้องต้น
+## 6. Troubleshooting เบื้องต้น
 
 - ถ้ารันแล้วเข้าเว็บไม่ได้
   - เช็ค `docker compose ps` ว่า service `web` และ `app` เป็น `Up` หรือไม่
@@ -271,7 +224,7 @@ docker compose exec app tail -f storage/logs/laravel.log
 
 ---
 
-## 8. License / Usage
+## 7. License / Usage
 
 โปรเจกต์นี้สร้างเพื่อใช้ในการเรียนวิชา System Analysis / Software Architecture  
 ผู้ใช้งานสามารถนำโค้ดไปศึกษา ปรับใช้ และต่อยอดได้ตามความเหมาะสม
